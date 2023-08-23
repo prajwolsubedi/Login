@@ -1,0 +1,29 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "prajwolsubedizzz@gmail.com",
+      "name": "Srijan",
+      "phoneNumber": "+1 (324) 234-2342",
+      "confirmPassword": "Prajwol123?",
+      "enterPassword": "Prajwol123?"
+    },
+    {
+      "email": "prajwolsubedizzz@gmail.com",
+      "name": "prajwol subedi",
+      "phoneNumber": "+1 (324) 234-2342",
+      "enterPassword": "InternSathi790?",
+      "confirmPassword": "InternSathi790?",
+      "termsOfService": true
+    },
+    {
+      "email": "prajwolsubedizzz@gmail.com",
+      "name": "Prajwol Subedi",
+      "phoneNumber": "+1 (324) 234-2342",
+      "enterPassword": "InternSathi790?",
+      "confirmPassword": "InternSathi790?",
+      "termsOfService": true,
+      "id": 2
+    }
+  ]
+}
