@@ -1,14 +1,17 @@
-import React from 'react'
-import { Typography } from '@mui/material'
+import { Typography, Box } from '@mui/material';
 interface SingleLineTextStyleProps {
     text: string;
 }
-const SingleLineTextStyle = (text) => {
-  return (
-    <Typography>
+const textStyles = {
+    fontFamily: 'Poppins, sans-serif',
+    fontSize: '12px',
+    color: '#000',
+    fontWeight: 400
+};
 
-    </Typography>
-  )
-}
+const SingleLineTextStyle = ({ text }: SingleLineTextStyleProps) => {
+    // const classes = useStyles();
+    return <Typography sx={textStyles}>{text}</Typography>;
+};
 
-export default SingleLineTextStyle
+export default SingleLineTextStyle;

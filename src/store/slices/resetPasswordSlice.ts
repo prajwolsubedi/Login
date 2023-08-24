@@ -5,7 +5,7 @@ interface resetPasswordState {
 }
 
 const initialState: resetPasswordState = {
-  isGetOTP: false,
+  isGetOTP: true,
 };
 
 const resetPasswordSlice = createSlice({

@@ -4,9 +4,6 @@ import { useAppDispatch } from '../../store/store';
 import { toggleAuthSelection } from '../../store/slices/authSelectionSlice';
 import { makeStyles } from '@mui/styles';
 
-const useStyles = makeStyles({
-  container: {},
-});
 
 interface Props {
   heading: string;
@@ -15,13 +12,12 @@ interface Props {
 }
 
 const FormTopSection = ({ heading, text, link }: Props) => {
-  const classes = useStyles();
   const dispatch = useAppDispatch();
   const handleAuthChange = () => {
     dispatch(toggleAuthSelection());
   };
   return (
-    <Box className={classes.container} >
+    <Box >
       <Typography
         sx={{
           fontWeight: '600',
@@ -32,13 +28,14 @@ const FormTopSection = ({ heading, text, link }: Props) => {
       >
         {heading}
       </Typography>
-      <Box sx={{ display: 'flex' }}>
+      <Box  sx={{ display: 'flex' }}>
         <Typography
           sx={{
             fontFamily: 'Poppins, sans-serif',
             fontWeight: '400',
             fontSize: '12px',
-            color: "#000"
+            color: "#000",
+            marginTop: "auto"
           }}
         >
           {text}
@@ -52,8 +49,8 @@ const FormTopSection = ({ heading, text, link }: Props) => {
               textDecoration: 'underline',
               color: '#0F6EFB',
               cursor: 'pointer',
-              fontWeight: 'light',
-              fontSize: '0.9rem',
+              fontWeight: '400',
+              fontSize: '16px',
             }}
           >
             {link}

@@ -4,14 +4,14 @@ import TextFieldWrapper from '../../atoms/FormsUI/TextField/TextFieldWrapper';
 import CheckBoxWrapper from '../../organisms/CheckBoxWrapper';
 import ButtonWrapper from '../../atoms/FormsUI/Button/ButtonWrapper';
 import PhoneInputWrapper from '../../organisms/PhoneInputWrapper';
-import signUpRequestProcessor from '../../../api/signUpRequestProcessor';
+import signUpRequest from '../../../api/signUpRequest';
 import FormTopSection from '../../organisms/FormTopSection';
 import Heading from '../../atoms/FormsUI/Heading/Heading';
 import { SIGN_UP_VALIDATION_SCHEMA } from '../../../hooks/Form/useFormValidationSchema';
 import { SIGN_UP_INITIAL_FORM_STATE } from '../../../hooks/Form/useFormValidationSchema';
 
 const SignUp = () => {
-    const { mutate } = signUpRequestProcessor();
+    const { mutate } = signUpRequest();
     const handleSubmit = (values, action) => {
         console.log('OnSubmit called');
         mutate(values, {
@@ -70,12 +70,12 @@ const SignUp = () => {
                                         <PhoneInputWrapper name="phoneNumber" label="Phone Number" />
                                     </Grid>
                                     <Grid item xs={12} sx={{ height: '50px' }}>
-                                        <TextFieldWrapper  name="enterPassword" label="Password" />
+                                        <TextFieldWrapper name="enterPassword" label="Password" />
                                     </Grid>
                                     <Grid item xs={12} sx={{ height: '50px' }}>
                                         <TextFieldWrapper name="confirmPassword" label="Confirm Password" />
                                     </Grid>
-                                    <Grid item xs={12} sx={{ height: '42px' }}>
+                                    <Grid item xs={12} sx={{ height: '18px' }}>
                                         <CheckBoxWrapper name="termsOfService" label="Accept terms and conditions" />
                                     </Grid>
                                     <Grid item xs={12} sx={{ height: '50px' }}>

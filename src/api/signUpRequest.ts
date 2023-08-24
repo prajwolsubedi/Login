@@ -23,25 +23,35 @@
 //   return { query, mutate, queryClient };
 // }
 
-import axios from 'axios';
-
-import { useMutation, UseMutationResult } from '@tanstack/react-query';
-
-interface SignUpFormData {
-    email: string;
-    name: string;
-    phoneNumber: string;
-    enterPassword: string;
-    confirmPassword: string;
-    termsOfService: boolean;
-}
+// interface SignUpFormData {
+//     email: string;
+//     name: string;
+//     phoneNumber: string;
+//     enterPassword: string;
+//     confirmPassword: string;
+//     termsOfService: boolean;
+// }
 
 // type SignUpMutation = UseMutationResult<unknown, Error, SignUpFormData, unknown>;
+// import axios from 'axios';
+
+// import { useMutation, UseMutationResult } from '@tanstack/react-query';
+
+
+// const signUpRequestProcessor = () => {
+//     return useMutation((formPayload) => {
+//         console.log(formPayload);
+//         return axios.post('http://18.136.197.25:8080/users/signUpUser', formPayload);
+//     });
+// };
+import axios from 'axios';
+import axiosClient from './axios';
+import { useMutation, UseMutationResult } from '@tanstack/react-query';
+
 
 const signUpRequestProcessor = () => {
-    return useMutation((formPayload) => {
-        console.log(formPayload);
-        return axios.post('http://18.136.197.25:8080/users/signUpUser', formPayload);
+    return useMutation((payload) => {
+        return axiosClient.post('/users/signUpUser', payload)
     });
 };
 
