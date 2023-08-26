@@ -19,7 +19,7 @@ const useStyles = makeStyles({
 
 const Authentication = () => {
   const classes = useStyles();
-  const isSignIn = useAppSelector((state) => state.authSelection.isSignIn);
+  const isSignIn = useAppSelector((state) => state.authentication.isSignIn);
   return (
     <Box className={classes.container}>
       {isSignIn ? <SignIn /> : <SignUp />}

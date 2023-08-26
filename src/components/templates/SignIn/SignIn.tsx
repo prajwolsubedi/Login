@@ -3,29 +3,34 @@ import { Formik, Form } from 'formik';
 import TextFieldWrapper from '../../atoms/FormsUI/TextField/TextFieldWrapper';
 import CheckBoxWrapper from '../../organisms/CheckBoxWrapper';
 import ButtonWrapper from '../../atoms/FormsUI/Button/ButtonWrapper';
-import signUpRequestProcessor from '../../../api/signUpRequest';
 import Heading from '../../atoms/FormsUI/Heading/Heading';
 import { SIGN_IN_INITIAL_FORM_STATE } from '../../../hooks/Form/useFormValidationSchema';
 import { SIGN_IN_VALIDATION_SCHEMA } from '../../../hooks/Form/useFormValidationSchema';
 import FormTopSection from '../../organisms/FormTopSection';
-import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
-import { styled } from '@mui/system';
 import FormFooterSection from '../../molecules/FormFooterSection';
 import { Link } from 'react-router-dom';
 import signInRequest from '../../../api/signInRequest';
-const GlobalStyle = styled('div')({
-    fontFamily: "'Poppins', sans-serif"
-});
-
-const theme = createTheme();
+import { useAppDispatch, useAppSelector } from '../../../store/store';
+import { toggleLoggedIn } from '../../../store/slices/authenticationSlice';
+import { setAuthToken } from '../../../store/slices/authenticationSlice';
+import { useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+    const isLoggedIn = useAppSelector((state) => state.authentication.isLoggedIn);
+    
+
+    
+
     const { mutate } = signInRequest();
     const handleFormSubmit = (values, action) => {
         mutate(values, {
             onSuccess: (response) => {
-                alert('Signned In Successfully.');
-                console.log('singin success response', response)
+                dispatch(toggleLoggedIn());
+                dispatch(setAuthToken(response.data.token))
+                alert('Sending to dashboard');
+                navigate('/dashboard');
             },
             onError: (response) => {
                 alert('An error occured while submiting the form');
@@ -34,6 +39,7 @@ const SignIn = () => {
         });
         action.resetForm();
     };
+    console.log(isLoggedIn);
     return (
         <Grid
             container

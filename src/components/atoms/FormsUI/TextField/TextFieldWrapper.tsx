@@ -7,12 +7,14 @@ export interface TestFieldWrapperProps {
 }
 
 const TextFieldWrapper = ({ name, ...otherProps }: any) => {
-    const [field, mata] = useField(name);
+    const [field, meta, helpers] = useField(name);
+    // console.log(field,meta,helpers)
+
     const labelStyles = {
         color: '#000',
         fontFamily: 'Poppins, sans-serif',
-        fontSize: "16px",
-        fontWeight: 400,
+        fontSize: '16px',
+        fontWeight: 400
     };
     // const errorStyles = {
     //   fontSize: "12px", // Adjust the font size for the error message
@@ -23,20 +25,19 @@ const TextFieldWrapper = ({ name, ...otherProps }: any) => {
         ...otherProps,
         fullWidth: true,
         variant: 'outlined',
-        size: "large"
-
+        size: 'large'
     };
-    if (mata && mata.touched && mata.error) {
+    if (meta && meta.touched && meta.error) {
         configTextfield.error = true;
-        configTextfield.helperText = mata.error;
+        configTextfield.helperText = meta.error;
     }
     return (
         <TextField
-        inputProps={{
-            style:{
-              height: "19px",
-            }
-        }}
+            inputProps={{
+                style: {
+                    height: '19px'
+                }
+            }}
             {...configTextfield}
             InputLabelProps={{
                 style: labelStyles

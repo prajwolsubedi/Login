@@ -32,7 +32,7 @@ const CheckBoxWrapper = ({ name, label, ...otherProps }: any) => {
             <FormControl {...configFormControl} fullWidth>
                 <FormGroup>
                     <FormControlLabel
-                        sx={{ height: '10px' }}
+                        sx={{ height: '13px' }}
                         control={<Checkbox {...configCheckBox} />}
                         labelPlacement="end"
                         label={
@@ -49,7 +49,7 @@ const CheckBoxWrapper = ({ name, label, ...otherProps }: any) => {
                         }
                     />
                     {meta.touched && meta.error && (
-                        <FormHelperText sx={{ height: '15px', paddingLeft: '15px' }} error>
+                        <FormHelperText sx={{ height: '16px', paddingLeft: '15px' }} error>
                             {meta.error}
                         </FormHelperText>
                     )}
