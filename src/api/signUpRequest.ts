@@ -51,7 +51,7 @@ import { useMutation, UseMutationResult } from '@tanstack/react-query';
 
 const signUpRequestProcessor = () => {
     return useMutation((payload) => {
-        return axiosClient.post('/users/signUpUser', payload)
+        return axiosClient.post('/usersWithoutAuth/signUpUser', payload)
     });
 };
 

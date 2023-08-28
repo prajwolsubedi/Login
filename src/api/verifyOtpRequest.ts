@@ -14,7 +14,7 @@ const verifyOtpRequest = () => {
         const {otp, newPassword, confirmPassword} = payload;
         console.log(otp,newPassword,confirmPassword)
         console.log(otp, newPassword, confirmPassword)
-        axiosClient.put(`/users/changePassword?otp=${otp}&newPassword=${newPassword}&confirmPassword=${confirmPassword}`)
+        axiosClient.put(`/usersWithoutAuth/changePassword?otp=${otp}&newPassword=${newPassword}&confirmPassword=${confirmPassword}`)
     })
   )
 }

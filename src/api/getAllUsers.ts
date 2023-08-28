@@ -12,18 +12,23 @@ import { useMutation } from '@tanstack/react-query';
 //       'Authorization': 'Bearer ' + validToken()
 //     }
 //   }
-import { useAppSelector } from '../store/store';
+
+import { useAppSelector, useAppDispatch } from '../store/store';
+import { setAllUsers } from '../store/slices/allUsersSlice';
 
 const getAllUsers = () => {
+    const dispatch = useAppDispatch();
     const authToken = useAppSelector((state) => state.authentication.authToken);
     return useMutation(() => {
         // console.log(authToken);
         const config = {
-            headers: { 'Authorization':'Bearer ' + authToken }
+            headers: { Authorization: 'Bearer ' + authToken }
         };
         return axiosClient
-            .get(`/getAllSignedUpUsers`, config)
-            .then((res) => console.log('get All SignedUP users response => Successfuly all users data fetched response =>', res))
+            .get(`/usersWithAuth/getAllSignedUpUsers`, config)
+            .then((res) => {
+                return dispatch(setAllUsers(res.data));
+            })
             .catch((err) => console.log(err));
     });
 };
