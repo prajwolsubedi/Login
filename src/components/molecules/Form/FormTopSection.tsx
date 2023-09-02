@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
-import { useAppDispatch } from '../../store/store';
-import { toggleAuthSelection } from '../../store/slices/authenticationSlice';
+import { useAppDispatch } from '../../../store/store';
+import { toggleAuthSelection } from '../../../store/slices/authenticationSlice';
 
 interface Props {
     heading: string;

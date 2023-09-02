@@ -1,3 +1,4 @@
+import { Column } from "react-table";
 
 type ColumnType = {
   actions: string;
@@ -5,6 +6,13 @@ type ColumnType = {
   created_by: string;
   status: string;
 };
+
+export interface AllUsersType{
+  id: number;
+  name: string;
+  email: string;
+  phoneNumber: string;
+}
 
 export const COLUMNS = [
   {
@@ -21,7 +29,7 @@ export const COLUMNS = [
   },
   {
     Header: "Phone",
-    accessor: "phone",
+    accessor: "phoneNumber",
   },
-];
+] as Column<AllUsersType>[];
 

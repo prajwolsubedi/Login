@@ -1,0 +1,27 @@
+.table-container {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400; 
+    color: #000;
+}
+
+.table-heading-container {
+    background: var(--primary-50, #edf6ff);
+}
+
+.table-heading-items {
+    padding: 14px 29px 15px 30px;
+    font-weight: 500;
+}
+
+.table-body-container{
+
+}
+
+.table-body-items{
+    font-weight: 400;
+}
+
+.border {
+    border: 5px solid black;
+    background-color: #edf6ff;
+}

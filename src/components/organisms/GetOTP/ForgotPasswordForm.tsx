@@ -1,12 +1,12 @@
 import React from 'react';
 import { Grid } from '@mui/material';
 import { Formik, Form } from 'formik';
-import { FORGOT_PASSWORD_INITIAL_FORM_STATE, FORGOT_PASSWORD_VALIDATION_SCHEMA } from '../../hooks/Form/useFormValidationSchema';
-import PhoneInputWrapper from './PhoneInputWrapper';
-import ButtonWrapper from '../atoms/FormsUI/Button/ButtonWrapper';
-import { useAppDispatch } from '../../store/store';
-import { toggleGetOTP } from '../../store/slices/resetPasswordSlice';
-import getOtpRequest from '../../api/getOtpRequest';
+import { FORGOT_PASSWORD_INITIAL_FORM_STATE, FORGOT_PASSWORD_VALIDATION_SCHEMA } from '../../../hooks/Form/useFormValidationSchema';
+import PhoneInputWrapper from '../../atoms/FormsUI/PhoneInput/PhoneInputWrapper';
+import ButtonWrapper from '../../atoms/FormsUI/Button/ButtonWrapper';
+import { useAppDispatch } from '../../../store/store';
+import { toggleGetOTP } from '../../../store/slices/resetPasswordSlice';
+import getOtpRequest from '../../../api/PreviousTechinques/getOtpRequest';
 // export interface IForgotPasswordForm(Props) {};
 
 const ForgotPasswordForm: React.FunctionComponent = () => {

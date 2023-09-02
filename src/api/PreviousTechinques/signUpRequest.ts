@@ -37,21 +37,22 @@
 
 // import { useMutation, UseMutationResult } from '@tanstack/react-query';
 
-
 // const signUpRequestProcessor = () => {
 //     return useMutation((formPayload) => {
 //         console.log(formPayload);
 //         return axios.post('http://18.136.197.25:8080/users/signUpUser', formPayload);
 //     });
 // };
+// import axios from 'axios';
 import axios from 'axios';
-import axiosClient from './axios';
-import { useMutation, UseMutationResult } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 
+import { SignUpFormValuesType } from '../../components/Types/FormValuesType';
 
 const signUpRequestProcessor = () => {
-    return useMutation((payload) => {
-        return axiosClient.post('/usersWithoutAuth/signUpUser', payload)
+    return useMutation((payload: SignUpFormValuesType) => {
+        console.log('SignUp payload', payload);
+        return axios.post('/usersWithoutAuth/signUpUser', payload);
     });
 };
 

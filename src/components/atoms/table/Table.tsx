@@ -1,51 +1,45 @@
-// @ts-ignore
-import React, { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 import { COLUMNS } from './TableColumns';
-import getAllUsers from '../../../api/getAllUsers';
 import { useAppSelector } from '../../../store/store';
 import { useTable } from 'react-table';
+import './TableStyles.css';
 
 const Table = () => {
     const allUsers = useAppSelector((state) => state.allUsers.allUsers);
-    const { mutate } = getAllUsers();
-    useEffect(() => {
-        mutate();
-    }, []);
 
     const columns = useMemo(() => COLUMNS, []);
-    const data = useMemo(() => allUsers, []);
-    console.log('columns, data', columns, data);
-    console.log('allusers', allUsers);
+    const datas = useMemo(() => allUsers, [allUsers]);
 
-    const { getTableProps, headerGroups, getTableBodyProps, prepareRow, rows } = useTable({ columns, data });
+    const { getTableProps, headerGroups, getTableBodyProps, prepareRow, rows } = useTable({ columns, data: datas });
 
     return (
-        <>
-            <div>table</div>
-            <table {...getTableProps}>
-                <thead>
-                    {headerGroups.map((headerGroup) => (
-                        <tr {...headerGroup.getHeaderGroupProps()}>
-                            {headerGroup.headers.map((columns) => (
-                                <th {...columns.getHeaderProps()}>{columns.render('Header')}</th>
+        <table {...getTableProps} className="table-container">
+            <thead>
+                {headerGroups.map((headerGroup) => (
+                    <tr {...headerGroup.getHeaderGroupProps()} className="table-heading-container">
+                        {headerGroup.headers.map((columns) => (
+                            <th {...columns.getHeaderProps()} className="table-heading-items">
+                                {columns.render('Header')}
+                            </th>
+                        ))}
+                    </tr>
+                ))}
+            </thead>
+            <tbody {...getTableBodyProps()}>
+                {rows.map((row, i) => {
+                    prepareRow(row);
+                    return (
+                        <tr {...row.getRowProps()}>
+                            {row.cells.map((cell) => (
+                                <td {...cell.getCellProps()} className="table-body-items">
+                                    {cell.render('Cell')}
+                                </td>
                             ))}
                         </tr>
-                    ))}
-                </thead>
-                <tbody {...getTableBodyProps()}>
-                    {rows.map((row, i) => {
-                        prepareRow(row);
-                        return (
-                            <tr {...row.getRowProps()}>
-                                {row.cells.map((cell) => (
-                                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                                ))}
-                            </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
-        </>
+                    );
+                })}
+            </tbody>
+        </table>
     );
 };
 

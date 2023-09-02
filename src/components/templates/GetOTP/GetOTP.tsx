@@ -1,11 +1,11 @@
-import FormTopSection from '../../organisms/FormTopSection';
+import FormTopSection from '../../molecules/Form/FormTopSection';
 import { Grid, Typography } from '@mui/material';
-import ForgotPasswordForm from '../../organisms/ForgotPasswordForm';
+import ForgotPasswordForm from '../../organisms/GetOTP/ForgotPasswordForm';
 import Heading from '../../atoms/FormsUI/Heading/Heading';
-import FormFooterSection from '../../molecules/FormFooterSection';
+import FormFooterSection from '../../molecules/Form/FormFooterSection';
 import { Link } from 'react-router-dom';
+import GetOTPForm from '../../organisms/GetOTP/GetOTPForm';
 const GetOTP = () => {
-
     return (
         <Grid width="480px" height="450px" sx={{ gap: '60px' }}>
             <Grid item xs={12} sx={{ height: '54px', display: 'flex', justifyContent: 'center', marginBottom: '3rem' }}>
@@ -17,11 +17,11 @@ const GetOTP = () => {
                         <FormTopSection heading="Reset your password" text="Enter the phone number associated with your account and we'll send you a code to reset your password." link="" />
                     </Grid>
                     <Grid item xs={12}>
-                        <ForgotPasswordForm />
+                        <GetOTPForm />
                     </Grid>
                     <Grid item xs={12}>
                         <Link to="/authenticate">
-                            <FormFooterSection color="#000" marginLeft='0' marginRight='0'>
+                            <FormFooterSection color="#000" marginLeft="0" marginRight="0">
                                 Back
                             </FormFooterSection>
                         </Link>
@@ -33,4 +33,3 @@ const GetOTP = () => {
 };
 
 export default GetOTP;
-
