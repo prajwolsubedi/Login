@@ -1,9 +1,16 @@
 import { Button, ButtonProps, CircularProgress } from '@mui/material';
-type SubmitButtonProps = {
+import './SubmitButtonStyles.css';
+
+export type SubmitButtonProps = {
     children: string;
-    submitting: boolean;
+    isLoading?: boolean;
+    isFetching?: boolean;
+    submitting?: boolean;
+    isFetched?: boolean;
+    isSuccess?: boolean;
     vairant?: 'text' | 'contained' | 'outlined';
-    isValid: boolean;
+    isValid?: boolean;
+    successText?: string;
     color?: 'success' | 'error' | 'secondary' | 'primary' | 'inherit' | 'info' | 'warning';
 };
 
@@ -19,10 +26,10 @@ const configButton: ButtonProps = {
     }
 };
 
-const SubmitButton = ({ children, submitting, isValid, ...otherProps }: SubmitButtonProps & ButtonProps) => {
+const SubmitButton = ({ children, isLoading, isFetching, isFetched, submitting, isSuccess, successText, isValid, ...otherProps }: SubmitButtonProps & ButtonProps) => {
     return (
-        <Button type="submit" color="primary" variant="contained" {...configButton} {...otherProps}>
-            {submitting && isValid ? <CircularProgress /> : children}
+        <Button type="submit" color={isSuccess ? 'success' : 'primary'} variant="contained" {...configButton} {...otherProps}>
+            {isSuccess ? successText : isLoading ? <CircularProgress sx={{ color: '#ffffff' }} /> : children}
         </Button>
     );
 };

@@ -1,18 +1,17 @@
 import axios from 'axios';
 
-// axios.defaults.baseURL = "http://18.136.197.25:8080"
-
-import { SingUpRequestType, SignInRequestType, VerifyOTPType, GetOTPRequestType } from '../APITypes';
+import { SingUpRequestType, SignInRequestType, VerifyOTPType, GetOTPRequestType } from '../../../APITypes';
 
 export const SignInRequest = async ({ email, password }: SignInRequestType) => {
-    return await axios.post('http://18.136.197.25:8080/login', {
+    console.log(email, password);
+    return await axios.post('/login', {
         email,
         password
     });
 };
 
 export const SingUpRequest = async ({ email, name, enterPassword, confirmPassword, phoneNumber }: SingUpRequestType) => {
-    return await axios.post('http://18.136.197.25:8080/usersWithoutAuth/signUpUser', {
+    return await axios.post('/usersWithoutAuth/signUpUser', {
         email,
         name,
         enterPassword,
@@ -22,18 +21,15 @@ export const SingUpRequest = async ({ email, name, enterPassword, confirmPasswor
 };
 
 export const GetOTPRequest = async ({ phoneNumber }: GetOTPRequestType) => {
-    return await axios.post("http://18.136.197.25:8080/usersWithoutAuth/sendOtpToUser", null, {
-      params: {
-        phoneNumber,
-      },
+    return await axios.post('/usersWithoutAuth/sendOtpToUser', null, {
+        params: {
+            phoneNumber
+        }
     });
-  };
-  
-
-
+};
 
 export const verifyOTPRequest = async ({ otp, newPassword, confirmPassword }: VerifyOTPType) => {
-    return await axios.put('http://18.136.197.25:8080/usersWithoutAuth/changePassword', null, {
+    return await axios.put('/usersWithoutAuth/changePassword', null, {
         params: {
             otp,
             newPassword,

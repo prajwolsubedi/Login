@@ -38,7 +38,6 @@ const currentLoggedInUserSlice = createSlice({
     initialState,
     reducers: {
         setCurrentUser: (state, action: { payload: setUserPayloadType }) => {
-            console.log('CurrentLoggedInUserSlice', action.payload);
             state.userInfo.id = action.payload.id;
             state.userInfo.email = action.payload.email;
             state.userInfo.name = action.payload.name;

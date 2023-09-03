@@ -9,7 +9,7 @@ import { SingUpRequest } from '../../../api/WithoutAuthToken/BeforeLoginRequest'
 import PhoneInputWrapper from '../../atoms/FormsUI/PhoneInput/PhoneInputWrapper';
 import { useMutation } from '@tanstack/react-query';
 const SignUpForm = () => {
-    const { mutate } = useMutation(SingUpRequest, {
+    const { mutate, isLoading } = useMutation(SingUpRequest, {
         onSuccess: (response) => {
             console.log(response);
             alert('Account Created Successfully.');
@@ -94,7 +94,7 @@ const SignUpForm = () => {
                                 <CheckBoxWrapper name="termsOfService" onChange={handleChange} onBlur={handleBlur} fullWidth label="Accept terms and conditions" />
                             </Grid>
                             <Grid item xs={12} sx={{ height: '50px' }}>
-                                <SubmitButton vairant="outlined" color="primary" fullWidth isValid={isValid} submitting={isSubmitting}>
+                                <SubmitButton isLoading={isLoading} vairant="outlined" color="primary" fullWidth isValid={isValid} submitting={isSubmitting}>
                                     Sign Up
                                 </SubmitButton>
                             </Grid>
