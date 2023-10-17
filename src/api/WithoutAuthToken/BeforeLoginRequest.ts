@@ -1,18 +1,17 @@
 import axios from 'axios';
 
-// axios.defaults.baseURL = "http://18.136.197.25:8080"
 
 import { SingUpRequestType, SignInRequestType, VerifyOTPType, GetOTPRequestType } from '../APITypes';
 
 export const SignInRequest = async ({ email, password }: SignInRequestType) => {
-    return await axios.post('http://18.136.197.25:8080/login', {
+    return await axios.post('http://enterTheURLHere', {
         email,
         password
     });
 };
 
 export const SingUpRequest = async ({ email, name, enterPassword, confirmPassword, phoneNumber }: SingUpRequestType) => {
-    return await axios.post('http://18.136.197.25:8080/usersWithoutAuth/signUpUser', {
+    return await axios.post('http://', {
         email,
         name,
         enterPassword,
@@ -22,7 +21,7 @@ export const SingUpRequest = async ({ email, name, enterPassword, confirmPasswor
 };
 
 export const GetOTPRequest = async ({ phoneNumber }: GetOTPRequestType) => {
-    return await axios.post("http://18.136.197.25:8080/usersWithoutAuth/sendOtpToUser", null, {
+    return await axios.post("http://", null, {
       params: {
         phoneNumber,
       },

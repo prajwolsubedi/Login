@@ -22,7 +22,7 @@ const App = () => {
     return (
         <ThemeProvider theme={theme}>
             <Routes>
-                <Route path="authenticate" element={<Authentication />}></Route>
+                <Route path="/" element={<Authentication />}></Route>
                 <Route path="forgotpassword" element={<ResetPasswordPage />}></Route>
                 <Route
                     path="dashboard"
